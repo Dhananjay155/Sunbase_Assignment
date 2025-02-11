@@ -28,8 +28,10 @@ const data = [
     const formContainer = document.querySelector(".form");
     const buttons = document.querySelectorAll(".components-items");
     const saveButton = document.querySelector(".btn");
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const slideContainer = document.querySelector('.slide-container');
+    const overlay = document.querySelector('.overlay');
 
-    // Initialize drag and drop
     initializeDragAndDrop();
 
     buttons.forEach((button, index) => {
@@ -76,7 +78,6 @@ const data = [
         formGroup.dataset.id = field.id;
         formGroup.dataset.type = field.type;
 
-        // Add drag handlers
         formGroup.addEventListener("dragstart", () => {
             formGroup.classList.add("dragging");
         });
@@ -149,4 +150,13 @@ const data = [
         console.log("Saved Form Data:", formData);
         return formData;
     }
-});
+    hamburgerMenu.addEventListener('click', function() {
+        slideContainer.classList.toggle('active');
+        overlay.classList.toggle('active');
+      });
+
+      overlay.addEventListener('click', function() {
+        slideContainer.classList.remove('active');
+        overlay.classList.remove('active');
+})
+})
